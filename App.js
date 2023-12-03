@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, FlatList} from 'react-native';
-import Header from './components/header';
+import { StyleSheet, Text, View, FlatList, SafeAreaView} from 'react-native';
 import ToDoList from './components/todolist';
 import Form from './components/form';
 
@@ -10,15 +9,15 @@ import Form from './components/form';
 export default function App() {
 
   const [listOfItems, setListOfItems] = useState([
-    {task: 'Buy Milk', key: '1'},
-    {task: 'Wash car', key: '2'},
-    {task: 'Buy potatos', key: '3'},
+    {name_of_task: 'MILK', descr_of_task: 'buy milk', key: Math.random().toString(36).substring(7)},
+    {name_of_task: 'CAR', descr_of_task: 'wash car', key: Math.random().toString(36).substring(7)},
+    {name_of_task: 'NAME', descr_of_task: 'DOM NAME', key: Math.random().toString(36).substring(7)},
   ])
 
-  const addHandler = (text) => {
+  const addHandler = (name_of_task, descr_of_task) => {
     setListOfItems((list) => {
       return [
-        {task: text, key: Math.random().toString(36).substring(7)},
+        {name_of_task: name_of_task, descr_of_task: descr_of_task, key: Math.random().toString(36).substring(7)},
         ...list
       ]
     })
@@ -31,18 +30,22 @@ export default function App() {
   }
 
   return (
-    <View>
-      <Header />
+    <SafeAreaView style={styles.SafeAreaView}>
       <Form addHandler={addHandler} />
       <View>
         <FlatList data={listOfItems} renderItem={({ item }) => (
           <ToDoList el={item} deleteHandler={deleteHandler} />
         )} />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-
+  SafeAreaView: {
+    marginTop: 0,
+    marginRight: 'auto',
+    marginBottom: 0,
+    marginLeft: 'auto',
+  }
 });
