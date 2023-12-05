@@ -4,8 +4,6 @@ import { StyleSheet, Text, View, FlatList, SafeAreaView} from 'react-native';
 import ToDoList from './components/todolist';
 import Form from './components/form';
 
-// import { FlatList } from 'react-native-web';
-
 export default function App() {
 
   const [listOfItems, setListOfItems] = useState([

@@ -16,13 +16,6 @@ export default function Form({addHandler}) {
         setDescr(text);
     };
 
-//   return (
-//     <View >
-//         <TextInput style={styles.input_form} onChangeText={onchange} placeholder='INPUT TASK' />
-//         <Button style={styles.add_task} onPress={() => addHandler(text_from_user)} title='Add task' />
-//     </View>
-//   );
-
     return (
         <View style = {styles.mainArea}>
             <View style = {styles.formArea}>
